@@ -1,0 +1,24 @@
+#include "Punctuation.Classifier"
+
+#
+# ? zero or one
+# + one or more
+# * zero or more
+#
+
+Percent = {
+   { PercentNumber Spaces PercentWord },
+}
+
+PercentWord = {
+	{ ["percent" ]  SentanceEnd }, 													# No Abbreviation
+	{ [ "pct" ]     SentanceEnd }, 													# Business, Chartering, Measure
+	{ [ "pc" ]      SentanceEnd }, 													# Medical, Medicine, Technology
+	{ [ "p" ]       SentanceEnd }, 													# Medical
+	{ [ "%" ]       SentanceEnd }, 													# Arithmetic, fractions, Math
+	{ [ "P/C" ]     SentanceEnd }, 													# Business, B2B, International trade, Trade
+}
+
+PercentNumber = {
+	{ ([-+]?([1-9][0-9]*\.?[0-9]*)|(\.[0-9]+))([Ee][+-]?[0-9]+)? },		# 
+}

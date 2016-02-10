@@ -1,0 +1,42 @@
+#include "Punctuation.Classifier"
+
+#
+# ? zero or one
+# + one or more
+# * zero or more
+#
+
+Date = {
+   { DayOfWeek ?, [,]* MonthNumber [/\-]+ Day [/\-]* Year? },
+   { DayOfWeek ?, [,]* MonthWord [ ]+ Day [, ]* Year? },
+}
+
+DayOfWeek = {
+   { ["Sunday" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday"],
+   ( [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"} "."? )
+}
+
+MonthWord = {
+   { ["January" | "February" | "April" | "May" | "June" | "July" | "August" | "September" | "October" | "November" | "December"],
+   ( ["Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" | "Oct" | "Nov" | "Dec"] Period )
+}
+
+MonthNumber = {
+   { [0]? [1-9] },                  # From Jan to September
+   { [1]  [0-2] },                  # From Oct
+}
+
+Day = {
+   [1-9],
+   ([12] [0-9]),
+   ([3] [0-1])
+}
+
+Year = {
+   ([1-9] [0-9]),
+   ([1-9] [0-9] [0-9] [0-9])
+}
+
+1st, 2nd, 3rd, 4rt, 5ft, 6st, 7th, 8th, 9th, 10th
+11tn, 12th, 13th, 14th
+21st, 22nd, 

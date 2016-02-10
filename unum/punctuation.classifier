@@ -1,0 +1,33 @@
+#
+# ? zero or one
+# + one or more
+# * zero or more
+#
+
+
+Spaces = {
+   [ ]*,
+}
+
+Period = {
+   [.]?,
+}
+
+Semicolon = {
+   [;]?,
+}
+
+Comma = {
+   [,]?,
+}
+
+Ellipses = {
+   [..],
+   [...],
+}
+
+SentanceEnd = {
+   { Spaces? Comma },
+   { Spaces? Semicolon },
+}
+
